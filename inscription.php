@@ -7,23 +7,23 @@ if ($_POST) {
 		$erreur .= '<div class="erreur">Erreur taille du pseudo</div>';
 	}
 	if (!preg_match('#^[a-zA-Z0-9-_.]+$#', $_POST['pseudo'])) {
-		$erreur .= '<div class="erreur">Erreur format/caractère pseudo</div>';
+		$erreur .= 'Erreur format/caractère pseudo';
 	}
 
 	$result = executeRequete("SELECT * FROM membre WHERE pseudo = '$_POST[pseudo]'"); 
 	if ($result->num_rows >= 1) {
-		$erreur .= '<div class="erreur">Pseudo indisponible !</div>';
+		$erreur .= 'Pseudo indisponible !';
 	}
 	if (empty($erreur)) {
 		executeRequete("
-			INSERT INTO membre (pseudo, mdp, nom, prenom, email, sexe)
+			INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite)
 			VALUES(
 			'$_POST[pseudo]',
 			'$_POST[mdp]',
 			'$_POST[nom]',
 			'$_POST[prenom]',
 			'$_POST[email]',
-			'$_POST[sexe]'
+			'$_POST[civilite]'
 			)
 			");
 		$contenu .= "Inscription réussie. Vous pouvez désormais vous connecter";
@@ -44,12 +44,14 @@ if ($_POST) {
 	<input type="text" name="prenom" id="prenom"><br><br>
 	<label for="email">Courriel</label><br>
 	<input type="email" name="email" id="email"><br><br>
-	<select name="sexe">
+	<select name="civilite">
 		<option value="f">Femme</option>
 		<option value="h">Homme</option>
 		<option value="a">Autre</option>
 	</select><br><br>
 	<input type="submit" name="inscription">
 </form>
+
+<?php echo $contenu ?>
 
 <?php require_once("inc/bas.inc.php") ?>
