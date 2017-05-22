@@ -12,6 +12,7 @@ if ($_POST) {
 					$_SESSION['membre'][$indice] = $element; 
 				}
 			}
+		header("location:profil.php");
 		}
 		else{
 		$contenu .= 'Erreur de Mot de Passe';
@@ -21,12 +22,13 @@ if ($_POST) {
 		$contenu .= 'Erreur de Pseudo';
 	}
 echo "$contenu";
+debug($_SESSION);
 }
 
  ?>
 
 <h1>Connexion</h1>
-<form>
+<form method="post">
 	<label for="pseudo">Pseudo</label><br>
 	<input type="text" name="pseudo"><br><br>
 

@@ -38,11 +38,11 @@ require_once("inc/init.inc.php");
 <header>
 	<ul>
 		<li><a href="acceuil.php">Accueil</a></li>
-		<li><a href="acceuil.php">Inscription</a></li>
-		<li><a href="acceuil.php">Profil</a></li>
-		<li><a href="acceuil.php">Boutique</a></li>
-		<li><a href="acceuil.php">Se connecter</a></li>
-		<li><a href="acceuil.php">Se deconnecter</a></li>
+		<li><a href="inscription.php">Inscription</a></li>
+		<li><a href="profil.php">Profil</a></li>
+		<li><a href="boutique.php">Boutique</a></li>
+		<li><a href="connexion.php">Se connecter</a></li>
+		<li><a href="connexion.php">Se deconnecter</a></li>
 	</ul>
 </header>
 <section class="main">

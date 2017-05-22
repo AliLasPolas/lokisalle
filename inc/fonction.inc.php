@@ -24,7 +24,7 @@ function debug($var, $mode = 1){
 		echo "<pre>";var_dump($var); echo "</pre";
 	}
 	echo "</div>";
-}	
+}
 
 
 //---------------------------------------
