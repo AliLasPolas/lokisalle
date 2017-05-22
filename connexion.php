@@ -1,4 +1,4 @@
-<?php require_once("haut.inc.php") ?>
+<?php require_once("inc/haut.inc.php") ?>
 
 <?php 
 
@@ -27,11 +27,13 @@ echo "$contenu";
 
 <h1>Connexion</h1>
 <form>
-	<label for="pseudo">Pseudo</label>
-	<input type="text" name="pseudo">
+	<label for="pseudo">Pseudo</label><br>
+	<input type="text" name="pseudo"><br><br>
 
-	<label for="mdp">Mot de passe</label>
-	<input type="password" name="mdp" id="mdp">
+	<label for="mdp">Mot de passe</label><br>
+	<input type="password" name="mdp" id="mdp"><br><br>
+
+	<input type="submit" name="envoi"><br>
 </form>
 
-<?php require_once("bas.inc.php") ?>
+<?php require_once("inc/bas.inc.php") ?>

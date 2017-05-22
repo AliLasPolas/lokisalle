@@ -49,6 +49,7 @@ CREATE TABLE produit (
 	pseudo  VARCHAR(20) DEFAULT NULL,
 	mdp VARCHAR(60) DEFAULT NULL,
 	nom VARCHAR(20) NOT NULL,
+	prenom VARCHAR(20) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	civilite ENUM ("m","f") NOT NULL,
 	statut INT(1) NOT NULL,

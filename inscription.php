@@ -1,4 +1,4 @@
-<?php require_once("haut.inc.php") ?>
+<?php require_once("inc/haut.inc.php") ?>
 
 <?php 
 if ($_POST) {
@@ -16,17 +16,14 @@ if ($_POST) {
 	}
 	if (empty($erreur)) {
 		executeRequete("
-			INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, ville, code_postal, adresse)
+			INSERT INTO membre (pseudo, mdp, nom, prenom, email, sexe)
 			VALUES(
 			'$_POST[pseudo]',
 			'$_POST[mdp]',
 			'$_POST[nom]',
 			'$_POST[prenom]',
 			'$_POST[email]',
-			'$_POST[civilite]',
-			'$_POST[ville]',
-			'$_POST[code_postal]',
-			'$_POST[adresse]'
+			'$_POST[sexe]'
 			)
 			");
 		$contenu .= "Inscription réussie. Vous pouvez désormais vous connecter";
@@ -39,19 +36,20 @@ if ($_POST) {
 <form method="post"> 
 	<label for="pseudo">Pseudonyme</label><br>
 	<input type="text" name="pseudo" id="pseudo"><br><br>
-	<label for="mdp">Mot de passe</label>
-	<input type="password" name="mdp" id="mdp">
-	<label for="nom">Nom</label>
-	<input type="text" name="nom" id="nom">
-	<label for="prenom">Prénom</label>
-	<input type="text" name="prenom" id="prenom">
-	<label for="email">Courriel</label>
-	<input type="email" name="email" id="email">
+	<label for="mdp">Mot de passe</label><br>
+	<input type="password" name="mdp" id="mdp"><br><br>
+	<label for="nom">Nom</label><br>
+	<input type="text" name="nom" id="nom"><br><br>
+	<label for="prenom">Prénom</label><br>
+	<input type="text" name="prenom" id="prenom"><br><br>
+	<label for="email">Courriel</label><br>
+	<input type="email" name="email" id="email"><br><br>
 	<select name="sexe">
 		<option value="f">Femme</option>
 		<option value="h">Homme</option>
 		<option value="a">Autre</option>
-	</select>
+	</select><br><br>
+	<input type="submit" name="inscription">
 </form>
 
-<?php require_once("bas.inc.php") ?>
+<?php require_once("inc/bas.inc.php") ?>
