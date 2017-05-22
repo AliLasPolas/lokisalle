@@ -2,6 +2,14 @@
 
 <?php 
 
+
+	if (isset($_GET['action'])) {
+		if ( $_GET['action'] == "deconnexion") {
+			session_destroy();
+		}
+	}
+
+
 if ($_POST) {
 	$resultat = executeRequete("SELECT * FROM membre WHERE pseudo = '$_POST[pseudo]' ");
 	if ($resultat->num_rows != 0) {

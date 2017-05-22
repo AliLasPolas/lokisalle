@@ -1,6 +1,7 @@
 <?php 
-require_once("inc/init.inc.php");
+require_once("init.inc.php");
 
+// debug($_SESSION);
 
  ?>
 
@@ -8,9 +9,13 @@ require_once("inc/init.inc.php");
 <html>
 <head>
 	<title>Inscription</title>
-	<link rel="stylesheet" type="text/css" href="">
 	<link rel="stylesheet" type="text/css" href="/lokisalle/inc/css/style.css">
 	<style type="text/css">
+		body{
+			height: 100vh;
+			width: 100vw;
+			background-color: #ddd;
+		}
 		ul{
 			width: 100vw;
 			height: 50px;
@@ -37,12 +42,32 @@ require_once("inc/init.inc.php");
 <body>
 <header>
 	<ul>
-		<li><a href="acceuil.php">Accueil</a></li>
-		<li><a href="inscription.php">Inscription</a></li>
-		<li><a href="profil.php">Profil</a></li>
-		<li><a href="boutique.php">Boutique</a></li>
-		<li><a href="connexion.php">Se connecter</a></li>
-		<li><a href="connexion.php">Se deconnecter</a></li>
+	<?php 
+		echo '<li><a href="acceuil.php">Accueil</a></li>';
+		if (isset($_SESSION) && !empty($_SESSION)) {
+			echo '<li><a href="/lokisalle/profil.php">Profil</a></li>';
+		}
+		else{
+			echo '<li><a href="/lokisalle/inscription.php">Inscription</a></li>';
+		}
+		echo '<li><a href="/lokisalle/boutique.php">Boutique</a></li>';
+		if (isset($_SESSION) && !empty($_SESSION)) {
+		echo '<li><a href="/lokisalle/connexion.php?action=deconnexion">Se deconnecter</a></li>';
+		}
+		else{
+		echo '<li><a href="/lokisalle/connexion.php">Se connecter</a></li>';
+		}
+		if (isset($_SESSION['membre']) ) {
+			if ($_SESSION['membre']['statut'] == 1) {
+				echo '<li><a href="/lokisalle/backoffice/gestion_salle.php">Gestion salles</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_produits.php">Gestion produits</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_avis.php">Gestion avis</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_membres.php">Gestion membres</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_commandes.php">Gestion commandes</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/statistiques.php">Statistiques</a></li>';
+			}
+		}
+	?>
 	</ul>
 </header>
 <section class="main">

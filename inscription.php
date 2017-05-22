@@ -3,6 +3,9 @@
 <?php 
 if ($_POST) {
 	$erreur = "";
+    $dt = new DateTime();
+	$date = $dt->format("Y-m-d H:i:s");
+	// debug($date);
 	if (strlen($_POST['pseudo']) <= 3 || strlen($_POST['pseudo']) > 20) {
 		$erreur .= '<div class="erreur">Erreur taille du pseudo</div>';
 	}
@@ -16,19 +19,21 @@ if ($_POST) {
 	}
 	if (empty($erreur)) {
 		executeRequete("
-			INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite)
+			INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, date_enregistrement)
 			VALUES(
 			'$_POST[pseudo]',
 			'$_POST[mdp]',
 			'$_POST[nom]',
 			'$_POST[prenom]',
 			'$_POST[email]',
-			'$_POST[civilite]'
+			'$_POST[civilite]',
+			'$date'
 			)
 			");
 		$contenu .= "Inscription réussie. Vous pouvez désormais vous connecter";
 	}
 	$contenu .= $erreur;
+	debug($_SESSION);
 }
  ?>
 
