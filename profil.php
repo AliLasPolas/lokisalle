@@ -114,7 +114,3 @@ if(isset($_GET['action'])&& $_GET['action'] == 'supprimer')
 require_once("inc/bas.inc.php");
 
 ?>
-=======
-<?php require_once("inc/haut.inc.php") ?>
-
-<?php require_once("inc/bas.inc.php") ?>

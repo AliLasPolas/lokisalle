@@ -1,6 +1,7 @@
 <?php 
 
 $mysqli = new Mysqli("localhost","root","","lokisalle");
+$mysqli->set_charset("utf8"); 
 if($mysqli->connect_error)die("Un problème est survenu lors de la tentative de connection a la BDD : " . $mysqli->connect_error);
 
 session_start();

@@ -6,8 +6,11 @@ require_once("init.inc.php");
  ?>
 
  <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Inscription</title>
 	<link rel="stylesheet" type="text/css" href="/lokisalle/inc/css/style.css">
 	<style type="text/css">
@@ -38,19 +41,19 @@ require_once("init.inc.php");
 			background-color: blue;
 		}
 	</style>
+
 </head>
 <body>
 <header>
 	<ul>
 	<?php 
-		echo '<li><a href="acceuil.php">Accueil</a></li>';
+		echo '<li><a href="/lokisalle/acceuil.php">Accueil</a></li>';
 		if (isset($_SESSION) && !empty($_SESSION)) {
 			echo '<li><a href="/lokisalle/profil.php">Profil</a></li>';
 		}
 		else{
 			echo '<li><a href="/lokisalle/inscription.php">Inscription</a></li>';
 		}
-		echo '<li><a href="/lokisalle/boutique.php">Boutique</a></li>';
 		if (isset($_SESSION) && !empty($_SESSION)) {
 		echo '<li><a href="/lokisalle/connexion.php?action=deconnexion">Se deconnecter</a></li>';
 		}
@@ -60,10 +63,10 @@ require_once("init.inc.php");
 		if (isset($_SESSION['membre']) ) {
 			if ($_SESSION['membre']['statut'] == 1) {
 				echo '<li><a href="/lokisalle/backoffice/gestion_salle.php">Gestion salles</a></li>';
-				echo '<li><a href="/lokisalle/backoffice/gestion_produits.php">Gestion produits</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_produit.php">Gestion produits</a></li>';
 				echo '<li><a href="/lokisalle/backoffice/gestion_avis.php">Gestion avis</a></li>';
 				echo '<li><a href="/lokisalle/backoffice/gestion_membres.php">Gestion membres</a></li>';
-				echo '<li><a href="/lokisalle/backoffice/gestion_commandes.php">Gestion commandes</a></li>';
+				echo '<li><a href="/lokisalle/backoffice/gestion_commande.php">Gestion commande</a></li>';
 				echo '<li><a href="/lokisalle/backoffice/statistiques.php">Statistiques</a></li>';
 			}
 		}
