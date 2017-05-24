@@ -36,6 +36,20 @@
 	$contenu .= '</table><br><hr><br>';
 echo $contenu;
 
+	if ($_POST) {
+			executeRequete("
+			REPLACE INTO produit (id_salle, date_arrivee, date_depart, prix)
+			VALUES(
+			'$_POST[id_salle]',
+			'$_POST[date_arrivee]',
+			'$_POST[date_depart]',
+			'$_POST[prix]'
+			)
+			");
+		$contenu .= 'Le produit a bien été mis a jour';
+
+	}
+
 	if (isset($_GET['action']) && $_GET['action'] == 'modification' ){
 		$resultat = executeRequete("SELECT * FROM produit WHERE id_produit = '$_GET[id_produit]'");
 	}
@@ -57,7 +71,7 @@ echo $contenu;
 		<label for="prix">Prix</label><br>
 		<input type="number" name="prix" value="' . $prix . '" id="prix" placeholder="Tarif"><br><br>
 
-		<select>';
+		<select name="id_salle">';
 		$resultat = executeRequete("SELECT * FROM salle ");
 		while ($ligne = $resultat->fetch_assoc()) {
 				echo "<option value=" . $ligne['id_salle'] . "> Salle de $ligne[categorie] $ligne[titre] - $ligne[adresse] $ligne[cp] $ligne[ville] - Capacité $ligne[capacite] personnes</option>";
