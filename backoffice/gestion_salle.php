@@ -82,7 +82,7 @@
 		executeRequete("
 			REPLACE INTO salle (id_salle, titre, description, photo, pays, ville, adresse, cp, capacite, categorie)
 			VALUES(
-			'$_GET[id_salle]',
+			'$_POST[id_salle]',
 			'$_POST[titre]',
 			'$_POST[description]',
 			'$photo_bdd',
@@ -122,6 +122,7 @@
 
 			<label for="titre">Titre</label><br>
 			<input type="text" name="titre" value="' . $titre . '" id="titre" placeholder="Titre"><br><br>
+			<input type="hidden" name="id_salle" value="' . $id_salle . '>
 
 			<label for="descripton">Description</label><br>
 			<textarea name="description" id="description" placeholder="description">' . $description . '</textarea><br><br>
